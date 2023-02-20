@@ -38,9 +38,13 @@ export var formatTimeDelta = function (milliseconds) {
 
 export var formatTimeStamp = function (
     seconds: number,
+    utc_to_local=true,
     {milliseconds = true} = {}
 ) {
-    let utc = new Date(seconds * 1000);
+    var utc = new Date(seconds * 1000);
+    if (utc_to_local) {
+        utc = new Date(utc.getTime() - utc.getTimezoneOffset() * 60 * 1000);
+    }
     let ts = utc.toISOString().replace("T", " ").replace("Z", "");
     if (!milliseconds)
         ts = ts.slice(0, -4);
