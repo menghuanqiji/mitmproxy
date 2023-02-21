@@ -130,7 +130,7 @@ class OrderKeySize(_OrderKey):
 
 
 orders = [
-    ("t", "time"),
+    ("t", "timestamp"),
     ("m", "method"),
     ("u", "url"),
     ("z", "size"),
@@ -157,7 +157,7 @@ class View(collections.abc.Sequence):
 
         self.default_order = OrderRequestStart(self)
         self.orders = dict(
-            time=OrderRequestStart(self),
+            timestamp=OrderRequestStart(self),
             method=OrderRequestMethod(self),
             url=OrderRequestURL(self),
             size=OrderKeySize(self),
@@ -195,7 +195,7 @@ class View(collections.abc.Sequence):
         loader.add_option(
             "view_order",
             str,
-            "time",
+            "timestamp",
             "Flow sort order.",
             choices=list(map(lambda c: c[1], orders)),
         )
