@@ -100,6 +100,10 @@ export default class FilterInput extends Component<FilterInputProps, FilterInput
 
     selectFilter(cmd) {
         this.setState({value: cmd})
+        // Only propagate valid filters upwards.
+        if (this.isValid(cmd)) {
+            this.props.onChange(cmd)
+        }
         ReactDOM.findDOMNode(this.refs.input).focus()
     }
 
