@@ -3,6 +3,7 @@ import * as store from "./utils/store"
 import Filt from "../filt/filt"
 import {Flow} from "../flow";
 import FlowColumns from "../components/FlowTable/FlowColumns";
+import * as options from "./options";
 
 export const ADD = 'FLOWS_ADD'
 export const UPDATE = 'FLOWS_UPDATE'
@@ -30,7 +31,7 @@ export interface FlowsState extends store.State<Flow> {
 export const defaultState: FlowsState = {
     highlight: undefined,
     filter: undefined,
-    sort: {column: undefined, desc: false},
+    sort: {column: options.defaultState.view_order, desc: options.defaultState.view_order_reversed},
     selected: [],
     ...store.defaultState
 }

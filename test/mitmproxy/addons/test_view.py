@@ -29,7 +29,7 @@ def test_order_refresh():
 
     tf = tflow.tflow(resp=True)
     with taddons.context() as tctx:
-        tctx.configure(v, view_order="time")
+        tctx.configure(v, view_order="timestamp")
         v.add([tf])
         tf.timestamp_created = 10
         assert not sargs
